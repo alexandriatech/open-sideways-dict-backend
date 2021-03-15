@@ -1,0 +1,43 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "db:create": "sequelize db:create",
+    "db:create:all": "sequelize db:create && NODE_ENV=test sequelize db:create",
+    "db:drop": "sequelize db:drop",
+    "db:drop:all": "sequelize db:drop && NODE_ENV=test sequelize db:drop",
+    "db:migrate": "sequelize db:migrate",
+    "db:migrate:all": "sequelize db:migrate && NODE_ENV=test sequelize db:migrate",
+    "db:rollback": "sequelize db:migrate:undo",
+    "db:rollback:all": "sequelize db:migrate:undo && NODE_ENV=test sequelize db:migrate:undo",
+    "db:reset": "yarn db:drop && yarn db:setup",
+    "db:setup": "yarn db:create && yarn db:migrate",
+    "db:seed": "npx sequelize db:seed:all",
+    "sequelize": "sequelize",
+    "start": "node index.js",
+    "start:lambda": "export NODE_ENV=development; export DATABASE_URL=$(heroku config:get DATABASE_URL -a opensideways); export PORT=4000; netlify-lambda serve ./",
+    "start:dev": "export NODE_ENV=development; export DATABASE_URL=$(heroku config:get DATABASE_URL -a opensideways); export PORT=4000; nodemon index.js",
+    "build:lambda": "netlify-lambda build ./"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.11.0",
+    "apollo-server-lambda": "^2.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "graphql": "^15.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "passport": "^0.4.1",
+    "passport-google-token": "^0.1.2",
+    "pg": "^8.2.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.10",
+    "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {
+    "netlify-lambda": "^2.0.3"
+  },
+  "engines": {
+    "node": ">=10 <14"
+  }
+}
