@@ -1,0 +1,139 @@
+# # -------------
+# # Queries
+
+# type Query {
+#   allWords(input: AllWordInput): [Word!]!
+#   getTagByTag(tag: String!): Tag
+#   getTagByTagId(id: Int!): Tag
+#   getUser(id: Int!): User
+#   getAllUsers: [User!]!
+#   getWordById(id: Int!): Word
+#   getWordByWord(word: String!): Word
+#   getWordDef(id: Int!): WordData
+#   getAllWordsDef: [WordData!]!
+# }
+
+# # -------------
+# # Mutations
+
+# type Mutation {
+#   authGoogle(accessToken: String!): User!
+#   updateUser(user: UpdateUserData!): User!
+#   updateUserSelf(user: UpdateUserSelfData!): User!
+#   addWordDef(wordDef: AddWordInput!): WordData!
+#   addWord(word: String!): Word!
+#   updateWord(wordData: UpdateWordData!): Word!
+# }
+
+# # -------------
+# # Types
+
+# type User {
+#   id: Int!
+#   token: String
+#   email: String!
+#   username: String!
+#   role: String!
+#   createdAt: Date!
+#   updatedAt: Date!
+#   words: [Word!]!
+#   wordDefs: [WordData!]!
+#   wordsDefsVotes: [Votes!]!
+# }
+
+# type Word {
+#   id: Int!
+#   word: String!
+#   isPublish: Boolean!
+#   createdAt: Date!
+#   updatedAt: Date!
+#   wordData: [WordData!]!
+#   relatedTerms: [Word!]!
+# }
+
+# type WordData {
+#   id: Int!
+#   word_id: Int!
+#   user_id: Int!
+#   votes: Int!
+#   definition: String!
+#   createdAt: Date!
+#   updatedAt: Date!
+#   word: Word!
+#   user: User!
+#   tags: [Tag!]!
+#   isPublish: Boolean!
+# }
+
+# type Tag {
+#   id: Int!
+#   tag: String!
+#   createdAt: Date!
+#   updatedAt: Date!
+#   wordsDefs: [WordData!]!
+# }
+
+# type Votes {
+#   user_id: Int!
+#   word_data_id: Int!
+#   value: Int!
+#   wordData: WordData!
+#   user: User!
+# }
+
+# # -------------
+# # Input types
+
+# input UpdateUserData {
+#   id: Int!
+#   email: String
+#   username: String
+#   role: AllUserRoles
+# }
+
+# input UpdateUserSelfData {
+#   email: String
+#   username: String
+# }
+
+# input AddWordInput {
+#   word_id: Int!
+#   definition: String!
+#   tags: [String!]
+# }
+
+# input AllWordInput {
+#   asc: Boolean
+#   isPublish: Boolean
+#   sortBy: AllWordsSort
+# }
+
+# input UpdateWordData {
+#   id: Int!
+#   isPublish: Boolean!
+# }
+
+# # -------------
+# # Scalars
+
+# # scalar Date
+
+# # -------------
+# # Enums
+
+# enum AllWordsSort {
+#   createdAt
+#   id
+#   isPublish
+#   updatedAt
+#   word
+# }
+
+# enum AllUserRoles {
+#   user
+#   admin
+# }
+
+type Query {
+  hello: String
+}

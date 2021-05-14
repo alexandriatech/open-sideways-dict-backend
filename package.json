@@ -21,23 +21,19 @@
     "build:lambda": "netlify-lambda build ./"
   },
   "dependencies": {
-    "apollo-server-express": "^2.11.0",
-    "apollo-server-lambda": "^2.21.1",
+    "apollo-server-lambda": "^2.24.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "firebase-admin": "^9.8.0",
     "graphql": "^15.5.0",
     "jsonwebtoken": "^8.5.1",
     "passport": "^0.4.1",
-    "passport-google-token": "^0.1.2",
-    "pg": "^8.2.1",
-    "pg-hstore": "^2.3.3",
-    "sequelize": "^5.21.10",
-    "sequelize-cli": "^5.5.1"
+    "passport-google-token": "^0.1.2"
   },
   "devDependencies": {
     "netlify-lambda": "^2.0.3"
   },
   "engines": {
-    "node": ">=10 <14"
+    "node": ">=10 <16"
   }
 }
